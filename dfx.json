@@ -1,0 +1,34 @@
+{
+  "canisters": {
+    "backend": {
+      "main": "server/index.ts",
+      "type": "custom",
+      "build": "npm run build",
+      "candid": "contracts/backend.did",
+      "wasm": "dist/backend.wasm",
+      "declarations": {
+        "output": "src/declarations"
+      }
+    },
+    "frontend": {
+      "dependencies": ["backend"],
+      "frontend": {
+        "entrypoint": "client/index.html"
+      },
+      "source": ["dist/"],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": ""
+    }
+  },
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:4943",
+      "type": "ephemeral"
+    }
+  },
+  "version": 1
+}
